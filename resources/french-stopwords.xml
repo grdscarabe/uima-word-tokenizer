@@ -1,0 +1,1864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary xmlns="http://incubator.apache.org/uima" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="dictionary.xsd">
+	<typeCollection>
+		<dictionaryMetaData caseNormalization="true" multiWordEntries="false"/>
+		<languageId>fr</languageId>
+		<typeDescription>
+			<typeName>lina.uima.bagofwords.types.StopWord</typeName>
+		</typeDescription>
+		<entries>
+			<entry>
+				<key>a</key>
+			</entry>
+
+			<entry>
+				<key>à</key>
+			</entry>
+
+			<entry>
+				<key>â</key>
+			</entry>
+
+			<entry>
+				<key>abord</key>
+			</entry>
+
+			<entry>
+				<key>afin</key>
+			</entry>
+
+			<entry>
+				<key>ah</key>
+			</entry>
+
+			<entry>
+				<key>ai</key>
+			</entry>
+
+			<entry>
+				<key>aie</key>
+			</entry>
+
+			<entry>
+				<key>ainsi</key>
+			</entry>
+
+			<entry>
+				<key>allaient</key>
+			</entry>
+
+			<entry>
+				<key>allo</key>
+			</entry>
+
+			<entry>
+				<key>allô</key>
+			</entry>
+
+			<entry>
+				<key>allons</key>
+			</entry>
+
+			<entry>
+				<key>après</key>
+			</entry>
+
+			<entry>
+				<key>assez</key>
+			</entry>
+
+			<entry>
+				<key>attendu</key>
+			</entry>
+
+			<entry>
+				<key>au</key>
+			</entry>
+
+			<entry>
+				<key>aucun</key>
+			</entry>
+
+			<entry>
+				<key>aucune</key>
+			</entry>
+
+			<entry>
+				<key>aujourd</key>
+			</entry>
+
+			<entry>
+				<key>aujourd'hui</key>
+			</entry>
+
+			<entry>
+				<key>auquel</key>
+			</entry>
+
+			<entry>
+				<key>aura</key>
+			</entry>
+
+			<entry>
+				<key>auront</key>
+			</entry>
+
+			<entry>
+				<key>aussi</key>
+			</entry>
+
+			<entry>
+				<key>autre</key>
+			</entry>
+
+			<entry>
+				<key>autres</key>
+			</entry>
+
+			<entry>
+				<key>aux</key>
+			</entry>
+
+			<entry>
+				<key>auxquelles</key>
+			</entry>
+
+			<entry>
+				<key>auxquels</key>
+			</entry>
+
+			<entry>
+				<key>avaient</key>
+			</entry>
+
+			<entry>
+				<key>avais</key>
+			</entry>
+
+			<entry>
+				<key>avait</key>
+			</entry>
+
+			<entry>
+				<key>avant</key>
+			</entry>
+
+			<entry>
+				<key>avec</key>
+			</entry>
+
+			<entry>
+				<key>avoir</key>
+			</entry>
+
+			<entry>
+				<key>ayant</key>
+			</entry>
+
+			<entry>
+				<key>b</key>
+			</entry>
+
+			<entry>
+				<key>bah</key>
+			</entry>
+
+			<entry>
+				<key>beaucoup</key>
+			</entry>
+
+			<entry>
+				<key>bien</key>
+			</entry>
+
+			<entry>
+				<key>bigre</key>
+			</entry>
+
+			<entry>
+				<key>boum</key>
+			</entry>
+
+			<entry>
+				<key>bravo</key>
+			</entry>
+
+			<entry>
+				<key>brrr</key>
+			</entry>
+
+			<entry>
+				<key>c</key>
+			</entry>
+
+			<entry>
+				<key>ça</key>
+			</entry>
+
+			<entry>
+				<key>car</key>
+			</entry>
+
+			<entry>
+				<key>ce</key>
+			</entry>
+
+			<entry>
+				<key>ceci</key>
+			</entry>
+
+			<entry>
+				<key>cela</key>
+			</entry>
+
+			<entry>
+				<key>celle</key>
+			</entry>
+
+			<entry>
+				<key>celle-ci</key>
+			</entry>
+
+			<entry>
+				<key>celle-là</key>
+			</entry>
+
+			<entry>
+				<key>celles</key>
+			</entry>
+
+			<entry>
+				<key>celles-ci</key>
+			</entry>
+
+			<entry>
+				<key>celles-là</key>
+			</entry>
+
+			<entry>
+				<key>celui</key>
+			</entry>
+
+			<entry>
+				<key>celui-ci</key>
+			</entry>
+
+			<entry>
+				<key>celui-là</key>
+			</entry>
+
+			<entry>
+				<key>cent</key>
+			</entry>
+
+			<entry>
+				<key>cependant</key>
+			</entry>
+
+			<entry>
+				<key>certain</key>
+			</entry>
+
+			<entry>
+				<key>certaine</key>
+			</entry>
+
+			<entry>
+				<key>certaines</key>
+			</entry>
+
+			<entry>
+				<key>certains</key>
+			</entry>
+
+			<entry>
+				<key>certes</key>
+			</entry>
+
+			<entry>
+				<key>ces</key>
+			</entry>
+
+			<entry>
+				<key>cet</key>
+			</entry>
+
+			<entry>
+				<key>cette</key>
+			</entry>
+
+			<entry>
+				<key>ceux</key>
+			</entry>
+
+			<entry>
+				<key>ceux-ci</key>
+			</entry>
+
+			<entry>
+				<key>ceux-là</key>
+			</entry>
+
+			<entry>
+				<key>chacun</key>
+			</entry>
+
+			<entry>
+				<key>chaque</key>
+			</entry>
+
+			<entry>
+				<key>cher</key>
+			</entry>
+
+			<entry>
+				<key>chère</key>
+			</entry>
+
+			<entry>
+				<key>chères</key>
+			</entry>
+
+			<entry>
+				<key>chers</key>
+			</entry>
+
+			<entry>
+				<key>chez</key>
+			</entry>
+
+			<entry>
+				<key>chiche</key>
+			</entry>
+
+			<entry>
+				<key>chut</key>
+			</entry>
+
+			<entry>
+				<key>ci</key>
+			</entry>
+
+			<entry>
+				<key>cinq</key>
+			</entry>
+
+			<entry>
+				<key>cinquantaine</key>
+			</entry>
+
+			<entry>
+				<key>cinquante</key>
+			</entry>
+
+			<entry>
+				<key>cinquantième</key>
+			</entry>
+
+			<entry>
+				<key>cinquième</key>
+			</entry>
+
+			<entry>
+				<key>clac</key>
+			</entry>
+
+			<entry>
+				<key>clic</key>
+			</entry>
+
+			<entry>
+				<key>combien</key>
+			</entry>
+
+			<entry>
+				<key>comme</key>
+			</entry>
+
+			<entry>
+				<key>comment</key>
+			</entry>
+
+			<entry>
+				<key>compris</key>
+			</entry>
+
+			<entry>
+				<key>concernant</key>
+			</entry>
+
+			<entry>
+				<key>contre</key>
+			</entry>
+
+			<entry>
+				<key>couic</key>
+			</entry>
+
+			<entry>
+				<key>crac</key>
+			</entry>
+
+			<entry>
+				<key>d</key>
+			</entry>
+
+			<entry>
+				<key>da</key>
+			</entry>
+
+			<entry>
+				<key>dans</key>
+			</entry>
+
+			<entry>
+				<key>de</key>
+			</entry>
+
+			<entry>
+				<key>debout</key>
+			</entry>
+
+			<entry>
+				<key>dedans</key>
+			</entry>
+
+			<entry>
+				<key>dehors</key>
+			</entry>
+
+			<entry>
+				<key>delà</key>
+			</entry>
+
+			<entry>
+				<key>depuis</key>
+			</entry>
+
+			<entry>
+				<key>derrière</key>
+			</entry>
+
+			<entry>
+				<key>des</key>
+			</entry>
+
+			<entry>
+				<key>dès</key>
+			</entry>
+
+			<entry>
+				<key>désormais</key>
+			</entry>
+
+			<entry>
+				<key>desquelles</key>
+			</entry>
+
+			<entry>
+				<key>desquels</key>
+			</entry>
+
+			<entry>
+				<key>dessous</key>
+			</entry>
+
+			<entry>
+				<key>dessus</key>
+			</entry>
+
+			<entry>
+				<key>deux</key>
+			</entry>
+
+			<entry>
+				<key>deuxième</key>
+			</entry>
+
+			<entry>
+				<key>deuxièmement</key>
+			</entry>
+
+			<entry>
+				<key>devant</key>
+			</entry>
+
+			<entry>
+				<key>devers</key>
+			</entry>
+
+			<entry>
+				<key>devra</key>
+			</entry>
+
+			<entry>
+				<key>différent</key>
+			</entry>
+
+			<entry>
+				<key>différente</key>
+			</entry>
+
+			<entry>
+				<key>différentes</key>
+			</entry>
+
+			<entry>
+				<key>différents</key>
+			</entry>
+
+			<entry>
+				<key>dire</key>
+			</entry>
+
+			<entry>
+				<key>divers</key>
+			</entry>
+
+			<entry>
+				<key>diverse</key>
+			</entry>
+
+			<entry>
+				<key>diverses</key>
+			</entry>
+
+			<entry>
+				<key>dix</key>
+			</entry>
+
+			<entry>
+				<key>dix-huit</key>
+			</entry>
+
+			<entry>
+				<key>dixième</key>
+			</entry>
+
+			<entry>
+				<key>dix-neuf</key>
+			</entry>
+
+			<entry>
+				<key>dix-sept</key>
+			</entry>
+
+			<entry>
+				<key>doit</key>
+			</entry>
+
+			<entry>
+				<key>doivent</key>
+			</entry>
+
+			<entry>
+				<key>donc</key>
+			</entry>
+
+			<entry>
+				<key>dont</key>
+			</entry>
+
+			<entry>
+				<key>douze</key>
+			</entry>
+
+			<entry>
+				<key>douzième</key>
+			</entry>
+
+			<entry>
+				<key>dring</key>
+			</entry>
+
+			<entry>
+				<key>du</key>
+			</entry>
+
+			<entry>
+				<key>duquel</key>
+			</entry>
+
+			<entry>
+				<key>durant</key>
+			</entry>
+
+			<entry>
+				<key>e</key>
+			</entry>
+
+			<entry>
+				<key>effet</key>
+			</entry>
+
+			<entry>
+				<key>eh</key>
+			</entry>
+
+			<entry>
+				<key>elle</key>
+			</entry>
+
+			<entry>
+				<key>elle-même</key>
+			</entry>
+
+			<entry>
+				<key>elles</key>
+			</entry>
+
+			<entry>
+				<key>elles-mêmes</key>
+			</entry>
+
+			<entry>
+				<key>en</key>
+			</entry>
+
+			<entry>
+				<key>encore</key>
+			</entry>
+
+			<entry>
+				<key>entre</key>
+			</entry>
+
+			<entry>
+				<key>envers</key>
+			</entry>
+
+			<entry>
+				<key>environ</key>
+			</entry>
+
+			<entry>
+				<key>es</key>
+			</entry>
+
+			<entry>
+				<key>ès</key>
+			</entry>
+
+			<entry>
+				<key>est</key>
+			</entry>
+
+			<entry>
+				<key>et</key>
+			</entry>
+
+			<entry>
+				<key>etant</key>
+			</entry>
+
+			<entry>
+				<key>étaient</key>
+			</entry>
+
+			<entry>
+				<key>étais</key>
+			</entry>
+
+			<entry>
+				<key>était</key>
+			</entry>
+
+			<entry>
+				<key>étant</key>
+			</entry>
+
+			<entry>
+				<key>etc</key>
+			</entry>
+
+			<entry>
+				<key>été</key>
+			</entry>
+
+			<entry>
+				<key>etre</key>
+			</entry>
+
+			<entry>
+				<key>être</key>
+			</entry>
+
+			<entry>
+				<key>eu</key>
+			</entry>
+
+			<entry>
+				<key>euh</key>
+			</entry>
+
+			<entry>
+				<key>eux</key>
+			</entry>
+
+			<entry>
+				<key>eux-mêmes</key>
+			</entry>
+
+			<entry>
+				<key>excepté</key>
+			</entry>
+
+			<entry>
+				<key>f</key>
+			</entry>
+
+			<entry>
+				<key>façon</key>
+			</entry>
+
+			<entry>
+				<key>fais</key>
+			</entry>
+
+			<entry>
+				<key>faisaient</key>
+			</entry>
+
+			<entry>
+				<key>faisant</key>
+			</entry>
+
+			<entry>
+				<key>fait</key>
+			</entry>
+
+			<entry>
+				<key>feront</key>
+			</entry>
+
+			<entry>
+				<key>fi</key>
+			</entry>
+
+			<entry>
+				<key>flac</key>
+			</entry>
+
+			<entry>
+				<key>floc</key>
+			</entry>
+
+			<entry>
+				<key>font</key>
+			</entry>
+
+			<entry>
+				<key>g</key>
+			</entry>
+
+			<entry>
+				<key>gens</key>
+			</entry>
+
+			<entry>
+				<key>h</key>
+			</entry>
+
+			<entry>
+				<key>ha</key>
+			</entry>
+
+			<entry>
+				<key>hé</key>
+			</entry>
+
+			<entry>
+				<key>hein</key>
+			</entry>
+
+			<entry>
+				<key>hélas</key>
+			</entry>
+
+			<entry>
+				<key>hem</key>
+			</entry>
+
+			<entry>
+				<key>hep</key>
+			</entry>
+
+			<entry>
+				<key>hi</key>
+			</entry>
+
+			<entry>
+				<key>ho</key>
+			</entry>
+
+			<entry>
+				<key>holà</key>
+			</entry>
+
+			<entry>
+				<key>hop</key>
+			</entry>
+
+			<entry>
+				<key>hormis</key>
+			</entry>
+
+			<entry>
+				<key>hors</key>
+			</entry>
+
+			<entry>
+				<key>hou</key>
+			</entry>
+
+			<entry>
+				<key>houp</key>
+			</entry>
+
+			<entry>
+				<key>hue</key>
+			</entry>
+
+			<entry>
+				<key>hui</key>
+			</entry>
+
+			<entry>
+				<key>huit</key>
+			</entry>
+
+			<entry>
+				<key>huitième</key>
+			</entry>
+
+			<entry>
+				<key>hum</key>
+			</entry>
+
+			<entry>
+				<key>hurrah</key>
+			</entry>
+
+			<entry>
+				<key>i</key>
+			</entry>
+
+			<entry>
+				<key>il</key>
+			</entry>
+
+			<entry>
+				<key>ils</key>
+			</entry>
+
+			<entry>
+				<key>importe</key>
+			</entry>
+
+			<entry>
+				<key>j</key>
+			</entry>
+
+			<entry>
+				<key>je</key>
+			</entry>
+
+			<entry>
+				<key>jusqu</key>
+			</entry>
+
+			<entry>
+				<key>jusque</key>
+			</entry>
+
+			<entry>
+				<key>k</key>
+			</entry>
+
+			<entry>
+				<key>l</key>
+			</entry>
+
+			<entry>
+				<key>la</key>
+			</entry>
+
+			<entry>
+				<key>là</key>
+			</entry>
+
+			<entry>
+				<key>laquelle</key>
+			</entry>
+
+			<entry>
+				<key>las</key>
+			</entry>
+
+			<entry>
+				<key>le</key>
+			</entry>
+
+			<entry>
+				<key>lequel</key>
+			</entry>
+
+			<entry>
+				<key>les</key>
+			</entry>
+
+			<entry>
+				<key>lès</key>
+			</entry>
+
+			<entry>
+				<key>lesquelles</key>
+			</entry>
+
+			<entry>
+				<key>lesquels</key>
+			</entry>
+
+			<entry>
+				<key>leur</key>
+			</entry>
+
+			<entry>
+				<key>leurs</key>
+			</entry>
+
+			<entry>
+				<key>longtemps</key>
+			</entry>
+
+			<entry>
+				<key>lorsque</key>
+			</entry>
+
+			<entry>
+				<key>lui</key>
+			</entry>
+
+			<entry>
+				<key>lui-même</key>
+			</entry>
+
+			<entry>
+				<key>m</key>
+			</entry>
+
+			<entry>
+				<key>ma</key>
+			</entry>
+
+			<entry>
+				<key>maint</key>
+			</entry>
+
+			<entry>
+				<key>mais</key>
+			</entry>
+
+			<entry>
+				<key>malgré</key>
+			</entry>
+
+			<entry>
+				<key>me</key>
+			</entry>
+
+			<entry>
+				<key>même</key>
+			</entry>
+
+			<entry>
+				<key>mêmes</key>
+			</entry>
+
+			<entry>
+				<key>merci</key>
+			</entry>
+
+			<entry>
+				<key>mes</key>
+			</entry>
+
+			<entry>
+				<key>mien</key>
+			</entry>
+
+			<entry>
+				<key>mienne</key>
+			</entry>
+
+			<entry>
+				<key>miennes</key>
+			</entry>
+
+			<entry>
+				<key>miens</key>
+			</entry>
+
+			<entry>
+				<key>mille</key>
+			</entry>
+
+			<entry>
+				<key>mince</key>
+			</entry>
+
+			<entry>
+				<key>moi</key>
+			</entry>
+
+			<entry>
+				<key>moi-même</key>
+			</entry>
+
+			<entry>
+				<key>moins</key>
+			</entry>
+
+			<entry>
+				<key>mon</key>
+			</entry>
+
+			<entry>
+				<key>moyennant</key>
+			</entry>
+
+			<entry>
+				<key>n</key>
+			</entry>
+
+			<entry>
+				<key>na</key>
+			</entry>
+
+			<entry>
+				<key>ne</key>
+			</entry>
+
+			<entry>
+				<key>néanmoins</key>
+			</entry>
+
+			<entry>
+				<key>neuf</key>
+			</entry>
+
+			<entry>
+				<key>neuvième</key>
+			</entry>
+
+			<entry>
+				<key>ni</key>
+			</entry>
+
+			<entry>
+				<key>nombreuses</key>
+			</entry>
+
+			<entry>
+				<key>nombreux</key>
+			</entry>
+
+			<entry>
+				<key>non</key>
+			</entry>
+
+			<entry>
+				<key>nos</key>
+			</entry>
+
+			<entry>
+				<key>notre</key>
+			</entry>
+
+			<entry>
+				<key>nôtre</key>
+			</entry>
+
+			<entry>
+				<key>nôtres</key>
+			</entry>
+
+			<entry>
+				<key>nous</key>
+			</entry>
+
+			<entry>
+				<key>nous-mêmes</key>
+			</entry>
+
+			<entry>
+				<key>nul</key>
+			</entry>
+
+			<entry>
+				<key>o</key>
+			</entry>
+
+			<entry>
+				<key>o|</key>
+			</entry>
+
+			<entry>
+				<key>ô</key>
+			</entry>
+
+			<entry>
+				<key>oh</key>
+			</entry>
+
+			<entry>
+				<key>ohé</key>
+			</entry>
+
+			<entry>
+				<key>olé</key>
+			</entry>
+
+			<entry>
+				<key>ollé</key>
+			</entry>
+
+			<entry>
+				<key>on</key>
+			</entry>
+
+			<entry>
+				<key>ont</key>
+			</entry>
+
+			<entry>
+				<key>onze</key>
+			</entry>
+
+			<entry>
+				<key>onzième</key>
+			</entry>
+
+			<entry>
+				<key>ore</key>
+			</entry>
+
+			<entry>
+				<key>ou</key>
+			</entry>
+
+			<entry>
+				<key>où</key>
+			</entry>
+
+			<entry>
+				<key>ouf</key>
+			</entry>
+
+			<entry>
+				<key>ouias</key>
+			</entry>
+
+			<entry>
+				<key>oust</key>
+			</entry>
+
+			<entry>
+				<key>ouste</key>
+			</entry>
+
+			<entry>
+				<key>outre</key>
+			</entry>
+
+			<entry>
+				<key>p</key>
+			</entry>
+
+			<entry>
+				<key>paf</key>
+			</entry>
+
+			<entry>
+				<key>pan</key>
+			</entry>
+
+			<entry>
+				<key>par</key>
+			</entry>
+
+			<entry>
+				<key>parmi</key>
+			</entry>
+
+			<entry>
+				<key>partant</key>
+			</entry>
+
+			<entry>
+				<key>particulier</key>
+			</entry>
+
+			<entry>
+				<key>particulière</key>
+			</entry>
+
+			<entry>
+				<key>particulièrement</key>
+			</entry>
+
+			<entry>
+				<key>pas</key>
+			</entry>
+
+			<entry>
+				<key>passé</key>
+			</entry>
+
+			<entry>
+				<key>pendant</key>
+			</entry>
+
+			<entry>
+				<key>personne</key>
+			</entry>
+
+			<entry>
+				<key>peu</key>
+			</entry>
+
+			<entry>
+				<key>peut</key>
+			</entry>
+
+			<entry>
+				<key>peuvent</key>
+			</entry>
+
+			<entry>
+				<key>peux</key>
+			</entry>
+
+			<entry>
+				<key>pff</key>
+			</entry>
+
+			<entry>
+				<key>pfft</key>
+			</entry>
+
+			<entry>
+				<key>pfut</key>
+			</entry>
+
+			<entry>
+				<key>pif</key>
+			</entry>
+
+			<entry>
+				<key>plein</key>
+			</entry>
+
+			<entry>
+				<key>plouf</key>
+			</entry>
+
+			<entry>
+				<key>plus</key>
+			</entry>
+
+			<entry>
+				<key>plusieurs</key>
+			</entry>
+
+			<entry>
+				<key>plutôt</key>
+			</entry>
+
+			<entry>
+				<key>pouah</key>
+			</entry>
+
+			<entry>
+				<key>pour</key>
+			</entry>
+
+			<entry>
+				<key>pourquoi</key>
+			</entry>
+
+			<entry>
+				<key>premier</key>
+			</entry>
+
+			<entry>
+				<key>première</key>
+			</entry>
+
+			<entry>
+				<key>premièrement</key>
+			</entry>
+
+			<entry>
+				<key>près</key>
+			</entry>
+
+			<entry>
+				<key>proche</key>
+			</entry>
+
+			<entry>
+				<key>psitt</key>
+			</entry>
+
+			<entry>
+				<key>puisque</key>
+			</entry>
+
+			<entry>
+				<key>q</key>
+			</entry>
+
+			<entry>
+				<key>qu</key>
+			</entry>
+
+			<entry>
+				<key>quand</key>
+			</entry>
+
+			<entry>
+				<key>quant</key>
+			</entry>
+
+			<entry>
+				<key>quanta</key>
+			</entry>
+
+			<entry>
+				<key>quant-à-soi</key>
+			</entry>
+
+			<entry>
+				<key>quarante</key>
+			</entry>
+
+			<entry>
+				<key>quatorze</key>
+			</entry>
+
+			<entry>
+				<key>quatre</key>
+			</entry>
+
+			<entry>
+				<key>quatre-vingt</key>
+			</entry>
+
+			<entry>
+				<key>quatrième</key>
+			</entry>
+
+			<entry>
+				<key>quatrièmement</key>
+			</entry>
+
+			<entry>
+				<key>que</key>
+			</entry>
+
+			<entry>
+				<key>quel</key>
+			</entry>
+
+			<entry>
+				<key>quelconque</key>
+			</entry>
+
+			<entry>
+				<key>quelle</key>
+			</entry>
+
+			<entry>
+				<key>quelles</key>
+			</entry>
+
+			<entry>
+				<key>quelque</key>
+			</entry>
+
+			<entry>
+				<key>quelques</key>
+			</entry>
+
+			<entry>
+				<key>quelqu'un</key>
+			</entry>
+
+			<entry>
+				<key>quels</key>
+			</entry>
+
+			<entry>
+				<key>qui</key>
+			</entry>
+
+			<entry>
+				<key>quiconque</key>
+			</entry>
+
+			<entry>
+				<key>quinze</key>
+			</entry>
+
+			<entry>
+				<key>quoi</key>
+			</entry>
+
+			<entry>
+				<key>quoique</key>
+			</entry>
+
+			<entry>
+				<key>r</key>
+			</entry>
+
+			<entry>
+				<key>revoici</key>
+			</entry>
+
+			<entry>
+				<key>revoilà</key>
+			</entry>
+
+			<entry>
+				<key>rien</key>
+			</entry>
+
+			<entry>
+				<key>s</key>
+			</entry>
+
+			<entry>
+				<key>sa</key>
+			</entry>
+
+			<entry>
+				<key>sacrebleu</key>
+			</entry>
+
+			<entry>
+				<key>sans</key>
+			</entry>
+
+			<entry>
+				<key>sapristi</key>
+			</entry>
+
+			<entry>
+				<key>sauf</key>
+			</entry>
+
+			<entry>
+				<key>se</key>
+			</entry>
+
+			<entry>
+				<key>seize</key>
+			</entry>
+
+			<entry>
+				<key>selon</key>
+			</entry>
+
+			<entry>
+				<key>sept</key>
+			</entry>
+
+			<entry>
+				<key>septième</key>
+			</entry>
+
+			<entry>
+				<key>sera</key>
+			</entry>
+
+			<entry>
+				<key>seront</key>
+			</entry>
+
+			<entry>
+				<key>ses</key>
+			</entry>
+
+			<entry>
+				<key>si</key>
+			</entry>
+
+			<entry>
+				<key>sien</key>
+			</entry>
+
+			<entry>
+				<key>sienne</key>
+			</entry>
+
+			<entry>
+				<key>siennes</key>
+			</entry>
+
+			<entry>
+				<key>siens</key>
+			</entry>
+
+			<entry>
+				<key>sinon</key>
+			</entry>
+
+			<entry>
+				<key>six</key>
+			</entry>
+
+			<entry>
+				<key>sixième</key>
+			</entry>
+
+			<entry>
+				<key>soi</key>
+			</entry>
+
+			<entry>
+				<key>soi-même</key>
+			</entry>
+
+			<entry>
+				<key>soit</key>
+			</entry>
+
+			<entry>
+				<key>soixante</key>
+			</entry>
+
+			<entry>
+				<key>son</key>
+			</entry>
+
+			<entry>
+				<key>sont</key>
+			</entry>
+
+			<entry>
+				<key>sous</key>
+			</entry>
+
+			<entry>
+				<key>stop</key>
+			</entry>
+
+			<entry>
+				<key>suis</key>
+			</entry>
+
+			<entry>
+				<key>suivant</key>
+			</entry>
+
+			<entry>
+				<key>sur</key>
+			</entry>
+
+			<entry>
+				<key>surtout</key>
+			</entry>
+
+			<entry>
+				<key>t</key>
+			</entry>
+
+			<entry>
+				<key>ta</key>
+			</entry>
+
+			<entry>
+				<key>tac</key>
+			</entry>
+
+			<entry>
+				<key>tant</key>
+			</entry>
+
+			<entry>
+				<key>te</key>
+			</entry>
+
+			<entry>
+				<key>té</key>
+			</entry>
+
+			<entry>
+				<key>tel</key>
+			</entry>
+
+			<entry>
+				<key>telle</key>
+			</entry>
+
+			<entry>
+				<key>tellement</key>
+			</entry>
+
+			<entry>
+				<key>telles</key>
+			</entry>
+
+			<entry>
+				<key>tels</key>
+			</entry>
+
+			<entry>
+				<key>tenant</key>
+			</entry>
+
+			<entry>
+				<key>tes</key>
+			</entry>
+
+			<entry>
+				<key>tic</key>
+			</entry>
+
+			<entry>
+				<key>tien</key>
+			</entry>
+
+			<entry>
+				<key>tienne</key>
+			</entry>
+
+			<entry>
+				<key>tiennes</key>
+			</entry>
+
+			<entry>
+				<key>tiens</key>
+			</entry>
+
+			<entry>
+				<key>toc</key>
+			</entry>
+
+			<entry>
+				<key>toi</key>
+			</entry>
+
+			<entry>
+				<key>toi-même</key>
+			</entry>
+
+			<entry>
+				<key>ton</key>
+			</entry>
+
+			<entry>
+				<key>touchant</key>
+			</entry>
+
+			<entry>
+				<key>toujours</key>
+			</entry>
+
+			<entry>
+				<key>tous</key>
+			</entry>
+
+			<entry>
+				<key>tout</key>
+			</entry>
+
+			<entry>
+				<key>toute</key>
+			</entry>
+
+			<entry>
+				<key>toutes</key>
+			</entry>
+
+			<entry>
+				<key>treize</key>
+			</entry>
+
+			<entry>
+				<key>trente</key>
+			</entry>
+
+			<entry>
+				<key>très</key>
+			</entry>
+
+			<entry>
+				<key>trois</key>
+			</entry>
+
+			<entry>
+				<key>troisième</key>
+			</entry>
+
+			<entry>
+				<key>troisièmement</key>
+			</entry>
+
+			<entry>
+				<key>trop</key>
+			</entry>
+
+			<entry>
+				<key>tsoin</key>
+			</entry>
+
+			<entry>
+				<key>tsouin</key>
+			</entry>
+
+			<entry>
+				<key>tu</key>
+			</entry>
+
+			<entry>
+				<key>u</key>
+			</entry>
+
+			<entry>
+				<key>un</key>
+			</entry>
+
+			<entry>
+				<key>une</key>
+			</entry>
+
+			<entry>
+				<key>unes</key>
+			</entry>
+
+			<entry>
+				<key>uns</key>
+			</entry>
+
+			<entry>
+				<key>v</key>
+			</entry>
+
+			<entry>
+				<key>va</key>
+			</entry>
+
+			<entry>
+				<key>vais</key>
+			</entry>
+
+			<entry>
+				<key>vas</key>
+			</entry>
+
+			<entry>
+				<key>vé</key>
+			</entry>
+
+			<entry>
+				<key>vers</key>
+			</entry>
+
+			<entry>
+				<key>via</key>
+			</entry>
+
+			<entry>
+				<key>vif</key>
+			</entry>
+
+			<entry>
+				<key>vifs</key>
+			</entry>
+
+			<entry>
+				<key>vingt</key>
+			</entry>
+
+			<entry>
+				<key>vivat</key>
+			</entry>
+
+			<entry>
+				<key>vive</key>
+			</entry>
+
+			<entry>
+				<key>vives</key>
+			</entry>
+
+			<entry>
+				<key>vlan</key>
+			</entry>
+
+			<entry>
+				<key>voici</key>
+			</entry>
+
+			<entry>
+				<key>voilà</key>
+			</entry>
+
+			<entry>
+				<key>vont</key>
+			</entry>
+
+			<entry>
+				<key>vos</key>
+			</entry>
+
+			<entry>
+				<key>votre</key>
+			</entry>
+
+			<entry>
+				<key>vôtre</key>
+			</entry>
+
+			<entry>
+				<key>vôtres</key>
+			</entry>
+
+			<entry>
+				<key>vous</key>
+			</entry>
+
+			<entry>
+				<key>vous-mêmes</key>
+			</entry>
+
+			<entry>
+				<key>vu</key>
+			</entry>
+
+			<entry>
+				<key>w</key>
+			</entry>
+
+			<entry>
+				<key>x</key>
+			</entry>
+
+			<entry>
+				<key>y</key>
+			</entry>
+
+			<entry>
+				<key>z</key>
+			</entry>
+
+			<entry>
+				<key>zut</key>
+			</entry>
+		</entries>
+	</typeCollection>
+</dictionary>

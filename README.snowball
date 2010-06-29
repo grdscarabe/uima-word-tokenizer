@@ -1,0 +1,25 @@
+            aeUIMASnowballStemmer Changelog
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Copyright (c) 2009, Fabien B. Poulard <fabien.poulard@univ-nantes.fr>
+
+Configuration instructions
+--------------------------
+
+This is a UIMA analysis engine component. It has been developped for Apache 
+UIMA Version 2.2.2-incubating, but should run smoothly on most 2.x releases of
+Apache UIMA.
+
+The component is a wrapper for the java implementation of the snowball stemmer
+that can be found at the following url : 
+  http://snowball.tartarus.org/download.php
+The org.tartarus.snowball.* classes must be available in the JVM classpath in
+order for the component to work.
+
+Installation and Operating instructions
+---------------------------------------
+
+No special instruction is needed, the JAR must be accessible through the JVM 
+classpath when launching the cpeGUI or any other UIMA launcher. The descriptors
+for the components are present in the JAR.
+
