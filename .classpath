@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src/java/main"/>
+	<classpathentry kind="src" path="desc"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="var" path="COMMONS_LANG"/>
 	<classpathentry kind="var" path="JAVA_CSV"/>
+	<classpathentry kind="var" path="UIMA_HOME/lib/uima-core.jar" sourcepath="/UIMA_HOME/src/uimaj-2.3.0-incubating/uimaj-core/src/main/java">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Program Files/apache-uima/docs/api"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="UIMA_HOME/lib/uima-cpe.jar"/>
+	<classpathentry kind="var" path="UIMA_HOME/lib/uima-document-annotation.jar"/>
+	<classpathentry kind="var" path="UIMA_HOME/lib/uima-tools.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Program Files/apache-uima/docs/api"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="UIMA_HOME/lib/uimaj-examples.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/lib_stemmer"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

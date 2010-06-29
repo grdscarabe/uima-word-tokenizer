@@ -1,4 +1,4 @@
-package lina.uima.snowball;
+package tddts.preprocessing.snowball;
 
 // UIMA related dependencies
 import org.apache.uima.UimaContext;
@@ -13,7 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 // Snowball related dependencies
 import org.tartarus.snowball.SnowballStemmer;
 // Type dependencies
-import lina.uima.snowball.Stem;
+import tddts.preprocessing.types.Stem;
 
 /**
  * This class implements an Analysis Engine to wrap snowball for UIMA.
@@ -49,7 +49,7 @@ public class UIMASnowballStemmer extends JCasAnnotator_ImplBase {
 		String className =  "org.tartarus.snowball.ext." + 
 			theLanguage.toLowerCase() + "Stemmer";
 		try {
-			Class stemClass = Class.forName(className);
+			Class<?> stemClass = Class.forName(className);
 			theStemmer = (SnowballStemmer) stemClass.newInstance();
 		} catch (ClassNotFoundException e) {
 			throw new ResourceInitializationException(e);
@@ -79,8 +79,8 @@ public class UIMASnowballStemmer extends JCasAnnotator_ImplBase {
 			throw new AnalysisEngineProcessException(errmsg, new Object[]{mWordType});
 		}
 		// Now we browse for all those word annotations...
-		AnnotationIndex idxWord = (AnnotationIndex) cas.getAnnotationIndex(mWordType);
-		FSIterator itWord       = idxWord.iterator();
+		AnnotationIndex<Annotation> idxWord = cas.getAnnotationIndex(mWordType);
+		FSIterator<Annotation> itWord       = idxWord.iterator();
 		while (itWord.hasNext()) {
 			// Stem the current word
 			Annotation mWord = (Annotation) itWord.next();

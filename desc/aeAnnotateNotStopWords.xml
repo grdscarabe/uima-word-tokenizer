@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>lina.uima.bagofwords.utils.AnnotateNotStopWords</annotatorImplementationName>
+  <annotatorImplementationName>tddts.preprocessing.AnnotateNotStopWords</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>aeAnnotateNotStopWord</name>
     <description/>
@@ -34,13 +34,13 @@
       <nameValuePair>
         <name>StopWordType</name>
         <value>
-          <string>lina.uima.bagofwords.types.StopWord</string>
+          <string>tddts.preprocessing.types.StopWord</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
-        <import name="ts.ts-stopwords"/>
+        <import name="ts-stopwords"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

@@ -1,7 +1,7 @@
 
 
 /* First created by JCasGen Tue Sep 08 17:14:39 CEST 2009 */
-package lina.uima.snowball;
+package tddts.preprocessing.types;
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;

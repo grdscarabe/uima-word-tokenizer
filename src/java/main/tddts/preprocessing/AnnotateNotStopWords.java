@@ -16,14 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package lina.uima.bagofwords.utils;
+package tddts.preprocessing;
 
 // UIMA dependencies
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import lina.uima.bagofwords.types.NotStopWord;
-
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -31,7 +26,6 @@ import org.apache.uima.cas.ConstraintFactory;
 import org.apache.uima.cas.FSIntConstraint;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.cas.FSMatchConstraint;
-import org.apache.uima.cas.FSTypeConstraint;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.FeaturePath;
 import org.apache.uima.cas.Type;
@@ -41,6 +35,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
 import org.apache.uima.util.Logger;
+// Project dependencies
+import tddts.preprocessing.types.NotStopWord;
 
 /**
  * This class is part of a UIMA component that annotate the tokens that are
@@ -98,8 +94,8 @@ public class AnnotateNotStopWords extends JCasAnnotator_ImplBase {
 			throw new AnalysisEngineProcessException(theTokenTypeStr + " or " +
 					theStopWordTypeStr + " no such type in the Type System", null);
 		// Browse the tokens
-		AnnotationIndex idxToken = cas.getAnnotationIndex(theTokenType);
-		FSIterator itToken       = idxToken.iterator();
+		AnnotationIndex<Annotation> idxToken = cas.getAnnotationIndex(theTokenType);
+		FSIterator<Annotation> itToken       = idxToken.iterator();
 		while (itToken.hasNext()) {
 			Annotation token = (Annotation) itToken.next();
 			if ( ! isStopWord(cas, token, theStopWordType) ) {
@@ -138,7 +134,7 @@ public class AnnotateNotStopWords extends JCasAnnotator_ImplBase {
 	       // AND
 	       FSMatchConstraint beginAndEnd = cf.and(begin, end);
 	       // Iterator
-	       FSIterator filteredIterator =
+	       FSIterator<Annotation> filteredIterator =
 	              jcas.createFilteredIterator(
 	            		  jcas.getAnnotationIndex(StopWordType).iterator(), 
 	            		  beginAndEnd);
