@@ -36,7 +36,7 @@ public class FrenchTokenizerAutomatonTest {
 	};
 	
 	protected final String tstCompoundWords =
-		"Le grille-pain des USA s'amuse, c-à-d qu'il est heureux ajourd'hui";
+		"Le grille-pain des USA s'amuse, c-à-d qu’il est heureux ajourd'hui";
 	protected final int[][] tstCompoundWordsOffsets = new int[][] {
 			{0,1}, {3,13}, {15,17}, {19,21}, {23,24}, {25,29},
 			{30,30}, {32,36}, {38,40}, {41,42}, {44,46}, {48,54}, {56,65}
@@ -168,12 +168,6 @@ public class FrenchTokenizerAutomatonTest {
 				end = i-2;
 				offsets.add( new int[]{begin, end} );
 				begin = -1;
-				end   = -1;
-				break;
-			case switch_now:
-				end = i-1;
-				offsets.add( new int[]{begin, end} );
-				begin = i;
 				end   = -1;
 				break;
 			case switch_word:

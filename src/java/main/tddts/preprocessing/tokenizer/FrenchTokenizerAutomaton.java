@@ -36,8 +36,6 @@ public class FrenchTokenizerAutomaton {
 		start_word,       // a word starts at the current offset
 		end_word,         // the current word ended at the offset-1, the 
 		                  // current char is out of any word
-		switch_now,       // the current word ended at the offset-1, the current
-		                  // char starts a new one
 		switch_word,      // the current word ended at the current offset, the 
 		                  // next char will start a new word
 		end_word_prev,    // the current word ended at the offset-2, the last
@@ -119,10 +117,10 @@ public class FrenchTokenizerAutomaton {
 	/**
 	 * The automaton is in its initial state, out of any word.
 	 * null -> O0
-	 * O0 -> O0 [ label = "Zl, Zp, Zs" ];
-	 * O0 -> U0 [ label = "other" ];
-	 * O0 -> N0 [ label = "Nd, Nl, No" ];
-	 * O0 -> L0 [ label = "Ll, Lu, Lm, Lo, Lt" ];
+	 * O0 -> O0 [ label = "{Zl,Zp,Zs}/nop" ];
+	 * O0 -> N0 [ label = "{Nd,Nl,No}/start_word" ];
+	 * O0 -> L0 [ label = "{Ll,Lu,Lm,Lo,Lt}/start_word" ];
+	 * O0 -> U0 [ label = "other/start_word" ];
 	 */
 	 private Signal feedCharO0(char c) {
 		switch ( Character.getType(c) ) {
@@ -156,23 +154,6 @@ public class FrenchTokenizerAutomaton {
 		case Character.TITLECASE_LETTER:
 			theCurrentState = States.L0;
 			return Signal.start_word;
-		// Punctuation keep coming
-		// Pc = CONNECTOR_PUNCTUATION
-		// Pd = DASH_PUNCTUATION
-		// Pe = END_PUNCTUATION
-		// Pi = INITIAL_QUOTE_PUNCTUATION
-		// Pf = FINAL_QUOTE_PUNCTUATION
-		// Po = OTHER_PUNCTUATION
-		// Ps = START_PUNCTUATION
-		case Character.CONNECTOR_PUNCTUATION:
-		case Character.DASH_PUNCTUATION:
-		case Character.END_PUNCTUATION:
-		case Character.INITIAL_QUOTE_PUNCTUATION:
-		case Character.FINAL_QUOTE_PUNCTUATION:
-		case Character.OTHER_PUNCTUATION:
-		case Character.START_PUNCTUATION:
-			theCurrentState = States.P0;
-			return Signal.start_word;
 		// In all other case, we do not know what we are dealing with... so 
 		// just switch to the particular state U0 (UNKNOWN)
 		default:
@@ -185,10 +166,11 @@ public class FrenchTokenizerAutomaton {
 	  * The automaton is in the state where we deal with unrecognized type
 	  * of word. As long as we get special chars we stay in this state,
 	  * otherwise we jump to something more appropriate.
-	  * U0 -> U0 [ label = "other" ];
-	  * U0 -> L0 [ label = "Ll, Lu, Lm, Lo, Lt/switch_word" ];
-	  * U0 -> N0 [ label = "Nd, Nl, No/switch_word" ];
-	  * U0 -> O0 [ label = "Zl, Zp, Zs" ];
+	  * 
+	  * U0 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	  * U0 -> N0 [ label = "{Nd,Nl,No}/switch_word" ];
+	  * U0 -> L0 [ label = "{Ll,Lu,Lm,Lo,Lt}/switch_word" ];
+	  * U0 -> U0 [ label = "other/nop" ];
 	  */
 	private Signal feedCharU0(char c) {
 		switch ( Character.getType(c) ) {
@@ -231,10 +213,12 @@ public class FrenchTokenizerAutomaton {
 	
 	 /**
 	  * The automaton is in the state where we deal with punctuation.
-	  * P0 -> P0 [ label = "Pc, Pd, Pe, Pi, Pf, Po, Ps" ];
-	  * P0 -> L0 [ label = "Ll, Lu, Lm, Lo, Lt/switch_word" ];
-	  * P0 -> N0 [ label = "Nd, Nl, No/switch_word" ];
-	  * P0 -> O0 [ label = "Zl, Zp, Zs" ];
+	  * 
+	  * P0 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po,Ps}/nop" ];
+	  * P0 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	  * P0 -> N0 [ label = "{Nd,Nl,No}/switch_word" ];
+	  * P0 -> L0 [ label = "{Ll,Lu,Lm,Lo,Lt}/switch_word" ];
+	  * P0 -> U0 [ label = "other/switch_word" ];
 	  */
 	private Signal feedCharP0(char c) {
 		switch ( Character.getType(c) ) {
@@ -300,22 +284,27 @@ public class FrenchTokenizerAutomaton {
 	 * arise, we get to start a multiple chars word, otherwise if we encounter
 	 * an apostrophe, we most likely are in presence of a contracted article.
 	 * Any other case is problematic -> handle softly
-	 * L0 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L0 -> L2 [ label = "U+0027, U+02BC/switch_word" ];
-	 * L0 -> L4 [ label = "Pd, U+002E, U+002F" ];
-	 * L0 -> O0 [ label = "Zl, Zp, Zs/end_word" color="#A0ffA0" ];
-	 * L0 -> U0 [ label = "other/end_word" color="#ffA0A0" ];
+	 * 
+	 * L0 -> L2 [ label = "{U+0027,U+02BC,U+2019}/nop" ];
+	 * L0 -> L4 [ label = "{Pd,U+002E,U+002F}/nop" ];
+	 * L0 -> L5 [ label = "{U+0075,U+0055}/nop" ];
+	 * L0 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L0 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * L0 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * L0 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharL0(char c) {
 		// First check the particular case of the apostrophes and
 		// the hyphens
 		Character cApostrophe1 = new Character( (char) 0x0027);
 		Character cApostrophe2 = new Character( (char) 0x02BC);
+		Character cApostrophe3 = new Character( (char) 0x2019);
 		Character cHyphen1     = new Character( (char) 0x002E);
 		Character cHyphen2     = new Character( (char) 0x002F);
 		Character cU1          = new Character( (char) 0x0075); // u
 		Character cU2          = new Character( (char) 0x0055); // U
-		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c) ) {
+		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c) 
+				|| cApostrophe3.equals(c) ) {
 			theCurrentState = States.L2;
 			return Signal.nop;
 		} else if ( cHyphen1.equals(c) || cHyphen2.equals(c) ) {
@@ -369,7 +358,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
@@ -381,23 +370,22 @@ public class FrenchTokenizerAutomaton {
 	/**
 	 * The automaton is in the state of a multiple letters word.
 	 * We can have dash connected words or even apostrophe connected ones. 
-	 * L1 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L1 -> L3 [ label = "U+0027, U+02BC" ];
-	 * L1 -> O0 [ label = "Zl, Zp, Zs/end_word" color="#A0ffA0" ];
-	 * L1 -> U0 [ label = "other/end_word" color="#ffA0A0" ]; 
+	 * 
+	 * L1 -> L3 [ label = "{Pd,U+0027,U+02BC,U+2019,U+002F}/nop" ];
+	 * L1 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L1 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * L1 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ]; 
+	 * L1 -> U0 [ label = "other/end_word" ];
 	 */
 	private Signal feedCharL1(char c) {
 		// First check the particular case of the apostrophes and
 		// the hyphens
 		Character cApostrophe1 = new Character( (char) 0x0027);
 		Character cApostrophe2 = new Character( (char) 0x02BC);
-		//Character cHyphen1     = new Character( (char) 0x002E);
+		Character cApostrophe3 = new Character( (char) 0x2019);
 		Character cHyphen2     = new Character( (char) 0x002F);
-		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c) ) {
-			theCurrentState = States.L3;
-			return Signal.nop;
-		//} else if ( cHyphen1.equals(c) || cHyphen2.equals(c) ) {
-		} else if ( cHyphen2.equals(c) ) {
+		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c)
+				|| cApostrophe3.equals(c) || cHyphen2.equals(c) ) {
 			theCurrentState = States.L3;
 			return Signal.nop;
 		} else {
@@ -444,7 +432,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
@@ -457,9 +445,11 @@ public class FrenchTokenizerAutomaton {
 	 * The automaton is in the state where it has encountered an apostrophe
 	 * and the word only have one letter.
 	 * We will start a new word or get out.
-	 * L2 -> L0 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L2 -> O0 [ label = "Zl, Zp, Zs" ];
-	 * L2 -> U0 [ label = "other" ];
+	 * 
+	 * L2 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/switch_word" ];
+	 * L2 -> O0 [ label = "{Zl,Zp,Zs}/cancel_word" ];
+	 * L2 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * L2 -> U0 [ label = "other/nop" ];
 	 */
 	private Signal feedCharL2(char c) {
 		switch ( Character.getType(c) ) {
@@ -501,7 +491,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;
+			return Signal.switch_word;
 		// Otherwise, jump to the unknown state
 		default:
 			theCurrentState = States.U0;
@@ -513,9 +503,12 @@ public class FrenchTokenizerAutomaton {
 	 * The automaton is in the state where it has encountered an apostrophe
 	 * or a dash and is composed of several letters.
 	 * If we get a letter, we continue the word, otherwise we softly fail.
-	 * L3 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L3 -> U0 [ label = "other/end_word" color="#ffA0A0" ];
-	 * L3 -> O0 [ label = "Zl, Zp, Zs/end_word" color="#A0ffA0" ];
+	 * 
+	 * L3 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L3 -> O0 [ label = "{Zl,Zp,Zs}/end_word_prev" ];
+	 * L3 -> L6 [ label = "{Nd,Nl,No}/nop" ];
+	 * L3 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * L3 -> U0 [ label = "other/switch_word_prev;" ];
 	 */
 	private Signal feedCharL3(char c) {
 		switch ( Character.getType(c) ) {
@@ -567,7 +560,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;
+			return Signal.switch_word;
 		// Otherwise, jump to the unknown state and move the last char
 		// in the newly constructing word
 		default:
@@ -579,9 +572,12 @@ public class FrenchTokenizerAutomaton {
 	/**
 	 * The automaton is in a transitional state from one char to two or more
 	 * ones. Keep going.
-	 * L4 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L4 -> O0 [ label = "Zl, Zp, Zs/split_words_-1" ];
-	 * L4 -> U0 [ label = "other/split_words_-1" ];
+	 * 
+	 * L4 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L4 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * L4 -> L6 [ label = "{Nd,Nl,No}/nop" ];
+	 * L4 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * L4 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharL4(char c) {
 		switch ( Character.getType(c) ) {
@@ -632,7 +628,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;			
+			return Signal.switch_word;			
 		// Otherwise, jump to the unknown state
 		default:
 			theCurrentState = States.U0;
@@ -643,16 +639,20 @@ public class FrenchTokenizerAutomaton {
 	/**
 	 * Found something like "qu" (most likely ?u), and checking for 
 	 * contractions like qu'
-	 * L5 -> L2 [ label = "U+0027, U+02BC" ];
-	 * L5 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L5 -> O0 [ label = "Zl, Zp, Zs/end_word" ];
+	 * 
+	 * L5 -> L2 [ label = "{U+0027,U+02BC,U+2019}/nop" ];
+	 * L5 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L5 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * L4 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
 	 * L5 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharL5(char c) {
 		// First check the particular case of the apostrophes
 		Character cApostrophe1 = new Character( (char) 0x0027);
 		Character cApostrophe2 = new Character( (char) 0x02BC);
-		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c) ) {
+		Character cApostrophe3 = new Character( (char) 0x2019);
+		if ( cApostrophe1.equals(c) || cApostrophe2.equals(c)
+				|| cApostrophe3.equals(c) ) {
 			theCurrentState = States.L2;
 			return Signal.nop;
 		} else {
@@ -696,7 +696,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
@@ -707,9 +707,11 @@ public class FrenchTokenizerAutomaton {
 	
 	/**
 	 * We are in presence of a number in a word separated by a dash.
-	 * L6 -> L6 [ label = "Nd, Nl, No" ];
-	 * L6 -> L1 [ label = "Ll, Lu, Lm, Lo, Lt" ];
-	 * L6 -> O0 [ label = "Zl, Zp, Zs/end_word" ];
+	 * 
+	 * L6 -> L6 [ label = "{Nd,Nl,No}/nop" ];
+	 * L6 -> L1 [ label = "{Ll,Lu,Lm,Lo,Lt}/nop" ];
+	 * L6 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * L6 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
 	 * L6 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharL6(char c) {
@@ -761,7 +763,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;
+			return Signal.switch_word;
 		// Otherwise, jump to the unknown state
 		default:
 			theCurrentState = States.U0;
@@ -773,10 +775,12 @@ public class FrenchTokenizerAutomaton {
 	
 	/**
 	 * In this state we start a brand new word composed of numbers
-	 * N0 -> N0 [ label = "Nd, Nl, No" ];
-	 * N0 -> N1 [ label = "U+002E, U+002C" ];
-	 * N0 -> N3 [ label = "Sc, U+0025" ];
-	 * N0 -> O0 [ label = "Zl, Zp, Zs/end_word" ];
+	 * 
+	 * N0 -> N1 [ label = "{U+002E,U+002C}/nop" ];
+	 * N0 -> N3 [ label = "{Sc,U+0025}/nop" ];
+	 * N0 -> N0 [ label = "{Nd,Nl,No}/nop" ];
+	 * N0 -> O0 [ label = "{Zl,Zp,Zs}/end_word" ];
+	 * N0 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
 	 * N0 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharN0(char c) {
@@ -833,7 +837,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
@@ -844,9 +848,11 @@ public class FrenchTokenizerAutomaton {
 	
 	/**
 	 * We started a decimal number.
-	 * N1 -> N2 [ label = "Nd, Nl, No" ];
-	 * N1 -> O0 [ label = "Zl, Zp, Zs/split_words_-1" ];
-	 * N1 -> U0 [ label = "other/split_words_-1" ];
+	 * 
+	 * N1 -> N2 [ label = "{Nd,Nl,No}/nop" ];
+	 * N1 -> O0 [ label = "{Zl,Zp,Zs}/switch_word_prev" ];
+	 * N1 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * N1 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharN1(char c) {
 		switch ( Character.getType(c) ) {
@@ -885,7 +891,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;
+			return Signal.switch_word;
 		// Otherwise, jump to the unknown state
 		default:
 			theCurrentState = States.U0;
@@ -895,9 +901,11 @@ public class FrenchTokenizerAutomaton {
 	
 	/**
 	 * We are in presence of a decimal number.
-	 * N2 -> N2 [ label = "Nd, Nl, No" ];
-	 * N2 -> N3 [ label = "Sc, U+0025" ];
-	 * N2 -> N4 [ label = "Zl, Zp, Zs" ];
+	 * 
+	 * N2 -> N3 [ label = "{Sc,U+0025}/nop" ];
+	 * N2 -> N2 [ label = "{Nd,Nl,No}/nop" ];
+	 * N2 -> N4 [ label = "{Zl,Zp,Zs}/nop" ];
+	 * N2 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ]; 
 	 * N2 -> U0 [ label = "other/end_word" ];
 	 */
 	private Signal feedCharN2(char c) {
@@ -949,7 +957,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
@@ -961,9 +969,12 @@ public class FrenchTokenizerAutomaton {
 	/**
 	 * We have a complete number with currency. Whatever we get, we end this 
 	 * word.
-	 * N3 -> N0 [ label = "Nd, Nl, No" ];
-	 * N3 -> O0 [ label = "Zl, Zp, Zs" ];
-	 * N3 -> U0 [ label = "other" ];
+	 * 
+	 * N3 -> O0 [ label = "{Zl,Zp,Zs}/nop" ];
+	 * N3 -> N0 [ label = "{Nd,Nl,No}/switch_word" ];
+	 * N3 -> L0 [ label = "{Ll,Lu,Lm,Lo,Lt}/switch_word" ];
+	 * N3 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ]; 
+	 * N3 -> U0 [ label = "other/switch_word" ];
 	 */
 	private Signal feedCharN3(char c) {
 		switch ( Character.getType(c) ) {
@@ -1014,7 +1025,7 @@ public class FrenchTokenizerAutomaton {
 		case Character.OTHER_PUNCTUATION:
 		case Character.START_PUNCTUATION:
 			theCurrentState = States.P0;
-			return Signal.switch_now;
+			return Signal.switch_word;
 		// Otherwise, jump to the unknown state
 		default:
 			theCurrentState = States.U0;
@@ -1026,9 +1037,13 @@ public class FrenchTokenizerAutomaton {
 	 * We have encountered a space and were waiting for a currency symbol. We
 	 * may obtain it and finalize or number, or get something else and then
 	 * end the word before the space.
-	 * N4 -> N3 [ label = "Sc, U+0025" ];
-	 * N4 -> O0 [ label = "Zl, Zp, Zs/end_words_-1" ];
-	 * N4 -> U0 [ label = "other/end_words_-1" ];
+	 * 
+	 * N4 -> N3 [ label = "{Sc,U+0025}/nop" ];
+	 * N4 -> O0 [ label = "{Zl,Zp,Zs}/end_word_prev" ];
+	 * N4 -> N0 [ label = "{Nd,Nl,No}/switch_word_prev" ];
+	 * N4 -> L0 [ label = "{Ll,Lu,Lm,Lo,Lt}/switch_word_prev" ];
+	 * N4 -> P0 [ label = "{Pc,Pd,Pe,Pi,Pf,Po}/switch_word" ];
+	 * N4 -> U0 [ label = "other/switch_word_prev" ];
 	 */
 	private Signal feedCharN4(char c) {
 		// First check the particular case of the percentage sign
@@ -1092,7 +1107,7 @@ public class FrenchTokenizerAutomaton {
 			case Character.OTHER_PUNCTUATION:
 			case Character.START_PUNCTUATION:
 				theCurrentState = States.P0;
-				return Signal.switch_now;
+				return Signal.switch_word;
 			// Otherwise, jump to the unknown state
 			default:
 				theCurrentState = States.U0;
