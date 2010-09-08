@@ -7,7 +7,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.fabienpoulard.tddts</groupId>
 	<artifactId>uima-word-tokenizer</artifactId>
-	<version>0.1</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>French Unicode Tokenizer</name>
 	<description>Create the annotations to split the text in words based. Takes advantage of Unicode classes.
@@ -35,6 +35,14 @@ Specially designed for French.</description>
 			<version>2.3.0-incubating</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- UIMA tools -->
+		<!--
+		<dependency>
+			<groupId>org.apache.uima</groupId>
+			<artifactId>uimaj-tools</artifactId>
+			<version>2.3.0-incubating</version>
+		</dependency>
+		-->
 	</dependencies>
 	<build>
 		<plugins>
@@ -48,12 +56,50 @@ Specially designed for French.</description>
 					<target>1.5</target>
 				</configuration>
 			</plugin>
+			<!-- Generate annotation types -->
+			<!--
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.apache.uima.tools.jcasgen.Jg</mainClass>
+					<arguments>
+						<argument>-jcasgeninput</argument>
+						<argument>desc/tddts/preprocessing/ae/FrenchUnicodeTokenizer-AE.xml</argument>
+						<argument>-jcasgenoutput</argument>
+						<argument>src/java/main/</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+			-->
 		</plugins>
 		<sourceDirectory>src/java/main</sourceDirectory>
 		<outputDirectory>bin</outputDirectory>
 		<resources>
+			<!-- Descriptors -->
 			<resource>
 				<directory>desc</directory>
+			</resource>
+			<!-- Sources -->
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<!-- Release files -->
+			<resource>
+				<directory>.</directory>
+				<includes>
+					<include>LICENSE.tokenizer</include>
+					<include>README.tokenizer</include>
+				</includes>
 			</resource>
 		</resources>
 	</build>
