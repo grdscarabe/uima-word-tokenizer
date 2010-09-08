@@ -13,9 +13,7 @@ Specially designed for French.</description>
     <configurationParameters>
       <configurationParameter>
         <name>SofaNames</name>
-        <description>The Sofa names the annotator should work on. If no
-					names are specified, the annotator works on the
-					default sofa.</description>
+        <description>The Sofa names the annotator should work on. If no names are specified, the annotator works on the default sofa.</description>
         <type>String</type>
         <multiValued>true</multiValued>
         <mandatory>false</mandatory>
